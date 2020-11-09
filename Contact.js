@@ -129,3 +129,8 @@ contactsArr.push(new Contact("Virat","Kohli","Deshpran Marg","Delhi","New Delhi"
     console.log(e);
 }
 console.log(contactsArr);
+
+//UC4
+contactsArr.filter(contact=>contact.firstName=="Virat"&&contact.lastName=="Kohli")
+            .forEach(contact=>{contact.address="Anand Bhawan Sadak";});
+console.log(contactsArr);
