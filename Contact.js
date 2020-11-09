@@ -111,5 +111,21 @@ class Contact{
         ' Phone Number : '+this.phoneNumber+' Email : '+this.email+' ]';
     }
 }
-let contact=new Contact("Yudhajit","Koley","Sarat Chatterjee Road","Howrah","West Bengal","711 102","+91 9804889458","yudha@gmail.com");
+let contact;
+try{
+contact=new Contact("Yudhajit","Koley","Sarat Chatterjee Road","Howrah","West Bengal","711 102","+91 9804889458","yudha@gmail.com");
 console.log(contact.toString());
+}catch(e){
+    console.log(e);
+}
+
+//UC3
+let contactsArr=new Array();
+contactsArr.push(contact);
+try{
+contactsArr.push(new Contact("Rohit","Sharma","Tilak Sadak","Mumbai","Maharashtra","400672","+91 9627272772","rohit26627@gmail.com"));
+contactsArr.push(new Contact("Virat","Kohli","Deshpran Marg","Delhi","New Delhi","100672","+91 8096456234","virat.business@gmail.com"));
+}catch(e){
+    console.log(e);
+}
+console.log(contactsArr);
