@@ -1,14 +1,4 @@
 class Contact{
-    //fields
-    firstName;
-    lastName;
-    address;
-    city;
-    state;
-    zip;
-    phoneNumber;
-    email;
-
     //Constructor
     constructor(...params){
         this.firstName=params[0];
@@ -22,6 +12,98 @@ class Contact{
     }
 
     //Getters & Setters
+    get firstName(){
+        return this._firstName;
+    }
+    set firstName(firstName){
+        let firstNamePattern=RegExp('^[A-Z]{1}[a-z]{2,}$');
+        if(firstNamePattern.test(firstName)){
+            this._firstName=firstName
+        }
+        else
+        throw 'Invalid FirstName !';
+
+    }
+    get lastName(){
+        return this._lastName;
+    }
+    set lastName(lastName){
+        let lastNamePattern=RegExp('^[A-Z]{1}[a-z]{2,}$');
+        if(lastNamePattern.test(lastName)){
+            this._lastName=lastName;
+        }
+        else
+        throw 'Invalid LastName !';
+
+    }
+    get address(){
+        return this._address;
+    }
+    set address(address){
+        let addressPattern=RegExp('[A-Z a-z \s]{4,}');
+        if(addressPattern.test(address)){
+            this._address=address;
+        }
+        else
+        throw 'Invalid Address !';
+    }
+    get city(){
+        return this._city;
+    }
+    set city(city){
+        let cityPattern=RegExp('[A-Z a-z \s]{4,}');
+        if(cityPattern.test(city)){
+            this._city=city;
+        }
+        else
+        throw 'Invalid City !';
+    }
+    get state(){
+        return this._state;
+    }
+    set state(state){
+        let statePattern=RegExp('[A-Z a-z \s]{4,}');
+        if(statePattern.test(state)){
+            this._state=state;
+        }
+        else
+        throw 'Invalid State !';
+    }
+    get zip(){
+        return this._zip;
+    }
+    set zip(zip){
+        let zipPattern=RegExp('^[0-9_ ]{6,}$');
+        if(zipPattern.test(zip)){
+            this._zip=zip;
+        }
+        else
+        throw 'Invalid Zip Code !';
+    }
+    get phoneNumber(){
+        return this._phoneNumber;
+    }
+    set phoneNumber(phoneNumber){
+        let phPattern=RegExp('(^\\+)([0-9]{2,3})(\\s)'+'[0-9]{10}$');
+        if(phPattern.test(phoneNumber)){
+            this._phoneNumber=phoneNumber;
+        }
+        else
+        throw 'Invalid Phone Number !';
+    }
+    get email(){
+        return this._email;
+    }
+    set email(email){
+        let emailPattern=RegExp('(^[a-zA-Z0-9]+)'+'([. + _ -]?[a-zA-Z0-9]*)'+'[^. + _ -]@[a-zA-Z0-9]+'+'(\\.[a-zA-Z]{2,4})'+'(\\.[a-zA-Z]{2})?');
+        if(emailPattern.test(email)){
+            this._email=email;
+        }
+        else
+        throw 'Invalid Email ID !';
+    }
+    
+
     //Methods
     toString(){
         return '[ FirstName : '+this.firstName+' LastName : '+this.lastName+' Address : '
@@ -29,5 +111,5 @@ class Contact{
         ' Phone Number : '+this.phoneNumber+' Email : '+this.email+' ]';
     }
 }
-let contact=new Contact("Yudhajit","Koley","Sarat Chatterjee Road","Howrah","West Bengal",711102,9804809458,"yudha@gmail.com");
+let contact=new Contact("Yudhajit","Koley","Sarat Chatterjee Road","Howrah","West Bengal","711 102","+91 9804889458","yudha@gmail.com");
 console.log(contact.toString());
