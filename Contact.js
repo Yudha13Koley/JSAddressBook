@@ -133,6 +133,7 @@ console.log(contactsArr);
 //UC4
 contactsArr.filter(contact=>contact.firstName=="Virat"&&contact.lastName=="Kohli")
             .forEach(contact=>{contact.address="Anand Bhawan Sadak";});
+console.log('Number of Contacts in Array : '+contactsArr.reduce(countEntries,0));
 console.log(contactsArr);
 
 //UC5
@@ -143,3 +144,10 @@ contactsArr.filter(contact=>contact.firstName=="Virat"&&contact.lastName=="Kohli
         });
 contactsArr.splice(index);
 console.log(contactsArr);
+
+//UC6
+function countEntries(total){
+    return total+1;
+}
+let countOfContacts=contactsArr.reduce(countEntries,0);
+console.log('Number of Contacts in Array : '+countOfContacts);
