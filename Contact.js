@@ -192,7 +192,7 @@ function searchByCityOrState(field, value, AddressBook) {
 searchByCityOrState("City", "Howrah", contactsArr);
 searchByCityOrState("State", "West Bengal", contactsArr);
 
-//UC9
+//UC9 & UC10 Count by City And State
 function viewPersonsByCity(AddressBook) {
     let cityContactMap = new Map();
     AddressBook.forEach(contact => {
@@ -206,6 +206,9 @@ function viewPersonsByCity(AddressBook) {
     });
     console.log('The Map Of Contacts By City : ');
     console.log(cityContactMap);
+    cityContactMap.forEach((Value,key)=>{
+        console.log('The City '+key+' has No of Contacts : '+Value.length);
+    });
 }
 viewPersonsByCity(contactsArr);
 function viewPersonsByState(AddressBook) {
@@ -221,5 +224,8 @@ function viewPersonsByState(AddressBook) {
     });
     console.log('The Map Of Contacts By State : ');
     console.log(stateContactMap);
+    stateContactMap.forEach((Value,key)=>{
+        console.log('The State '+key+' has No of Contacts : '+Value.length);
+    });
 }
 viewPersonsByState(contactsArr);
