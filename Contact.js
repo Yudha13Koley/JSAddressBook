@@ -144,6 +144,7 @@ try {
     addContact(new Contact("Anushka", "Kohli", "Deshpran Marg", "Delhi", "New Delhi", "100672", "+91 8096456234", "virat.business@gmail.com"), contactsArr);
     addContact(new Contact("Vinod", "Kambli", "Deshpran Marg", "Howrah", "West Bengal", "100672", "+91 8096456234", "vinod.business@gmail.com"), contactsArr);
     addContact(new Contact("Sunil", "Dutta", "Deshpran Marg", "Kolkata", "West Bengal", "100672", "+91 8096456234", "vinod.business@gmail.com"), contactsArr);
+    addContact(new Contact("Sunil", "Anand", "Deshpran Marg", "Kolkata", "West Bengal", "100672", "+91 8096456234", "vinod.business@gmail.com"), contactsArr);
 } catch (e) {
     console.log(e);
 }
@@ -206,8 +207,8 @@ function viewPersonsByCity(AddressBook) {
     });
     console.log('The Map Of Contacts By City : ');
     console.log(cityContactMap);
-    cityContactMap.forEach((Value,key)=>{
-        console.log('The City '+key+' has No of Contacts : '+Value.length);
+    cityContactMap.forEach((Value, key) => {
+        console.log('The City ' + key + ' has No of Contacts : ' + Value.length);
     });
 }
 viewPersonsByCity(contactsArr);
@@ -224,8 +225,25 @@ function viewPersonsByState(AddressBook) {
     });
     console.log('The Map Of Contacts By State : ');
     console.log(stateContactMap);
-    stateContactMap.forEach((Value,key)=>{
-        console.log('The State '+key+' has No of Contacts : '+Value.length);
+    stateContactMap.forEach((Value, key) => {
+        console.log('The State ' + key + ' has No of Contacts : ' + Value.length);
     });
 }
 viewPersonsByState(contactsArr);
+
+//UC11 Sort Array By name
+function printSoretedArray(field, AddressBook) {
+    let newSortedBook = new Array();
+    AddressBook.forEach(contact => { newSortedBook.push(contact); });
+    if (field == "Name") {
+        function compareName(a, b) {
+            if (a.firstName + a.lastName > b.firstName + b.lastName) return 1;
+            if (a.firstName + a.lastName < b.firstName + b.lastName) return -1;
+            return 0;
+        }
+        newSortedBook.sort(compareName);
+        console.log('The List Of Contacts Sorted By : '+field);
+        console.log(newSortedBook);
+    }
+}
+printSoretedArray("Name", contactsArr);
