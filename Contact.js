@@ -231,7 +231,7 @@ function viewPersonsByState(AddressBook) {
 }
 viewPersonsByState(contactsArr);
 
-//UC11 Sort Array By name
+//UC11 Sort Array By name & UC12 sorted by city state and zip
 function printSoretedArray(field, AddressBook) {
     let newSortedBook = new Array();
     AddressBook.forEach(contact => { newSortedBook.push(contact); });
@@ -242,8 +242,41 @@ function printSoretedArray(field, AddressBook) {
             return 0;
         }
         newSortedBook.sort(compareName);
-        console.log('The List Of Contacts Sorted By : '+field);
+        console.log('The List Of Contacts Sorted By : ' + field);
+        console.log(newSortedBook);
+    }
+    if (field == "City") {
+        function compareCity(a, b) {
+            if (a.city > b.city) return 1;
+            if (a.city < b.city) return -1;
+            return 0;
+        }
+        newSortedBook.sort(compareCity);
+        console.log('The List Of Contacts Sorted By : ' + field);
+        console.log(newSortedBook);
+    }
+    if (field == "State") {
+        function compareState(a, b) {
+            if (a.state > b.state) return 1;
+            if (a.state < b.state) return -1;
+            return 0;
+        }
+        newSortedBook.sort(compareState);
+        console.log('The List Of Contacts Sorted By : ' + field);
+        console.log(newSortedBook);
+    }
+    if (field == "Zip") {
+        function compareZip(a, b) {
+            if (a.zip > b.zip) return 1;
+            if (a.zip < b.zip) return -1;
+            return 0;
+        }
+        newSortedBook.sort(compareZip);
+        console.log('The List Of Contacts Sorted By : ' + field);
         console.log(newSortedBook);
     }
 }
 printSoretedArray("Name", contactsArr);
+printSoretedArray("City", contactsArr);
+printSoretedArray("State", contactsArr);
+printSoretedArray("Zip", contactsArr);
