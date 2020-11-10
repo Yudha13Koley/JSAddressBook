@@ -191,3 +191,35 @@ function searchByCityOrState(field, value, AddressBook) {
 }
 searchByCityOrState("City", "Howrah", contactsArr);
 searchByCityOrState("State", "West Bengal", contactsArr);
+
+//UC9
+function viewPersonsByCity(AddressBook) {
+    let cityContactMap = new Map();
+    AddressBook.forEach(contact => {
+        if (cityContactMap.has(contact.city)) {
+            cityContactMap.get(contact.city).push(contact);
+        }
+        else {
+            cityContactMap.set(contact.city, new Array());
+            cityContactMap.get(contact.city).push(contact);
+        }
+    });
+    console.log('The Map Of Contacts By City : ');
+    console.log(cityContactMap);
+}
+viewPersonsByCity(contactsArr);
+function viewPersonsByState(AddressBook) {
+    let stateContactMap = new Map();
+    AddressBook.forEach(contact => {
+        if (stateContactMap.has(contact.state)) {
+            stateContactMap.get(contact.state).push(contact);
+        }
+        else {
+            stateContactMap.set(contact.state, new Array());
+            stateContactMap.get(contact.state).push(contact);
+        }
+    });
+    console.log('The Map Of Contacts By State : ');
+    console.log(stateContactMap);
+}
+viewPersonsByState(contactsArr);
