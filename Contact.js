@@ -135,14 +135,15 @@ function addContact(contact, AddressBook) {
     }
     else {
         AddressBook.push(contact);
-        return AddressBook;
     }
 }
 try {
-    contactsArr = addContact(contact, contactsArr);
-    contactsArr = addContact(new Contact("Rohit", "Sharma", "Tilak Sadak", "Mumbai", "Maharashtra", "400672", "+91 9627272772", "rohit26627@gmail.com"), contactsArr);
-    contactsArr = addContact(new Contact("Virat", "Kohli", "Deshpran Marg", "Delhi", "New Delhi", "100672", "+91 8096456234", "virat.business@gmail.com"), contactsArr);
-    contactsArr = addContact(new Contact("Virat", "Kohli", "Deshpran Marg", "Delhi", "New Delhi", "100672", "+91 8096456234", "virat.business@gmail.com"), contactsArr);
+    addContact(contact, contactsArr);
+    addContact(new Contact("Rohit", "Sharma", "Tilak Sadak", "Mumbai", "Maharashtra", "400672", "+91 9627272772", "rohit26627@gmail.com"), contactsArr);
+    addContact(new Contact("Virat", "Kohli", "Deshpran Marg", "Delhi", "New Delhi", "100672", "+91 8096456234", "virat.business@gmail.com"), contactsArr);
+    addContact(new Contact("Anushka", "Kohli", "Deshpran Marg", "Delhi", "New Delhi", "100672", "+91 8096456234", "virat.business@gmail.com"), contactsArr);
+    addContact(new Contact("Vinod", "Kambli", "Deshpran Marg", "Howrah", "West Bengal", "100672", "+91 8096456234", "vinod.business@gmail.com"), contactsArr);
+    addContact(new Contact("Sunil", "Dutta", "Deshpran Marg", "Kolkata", "West Bengal", "100672", "+91 8096456234", "vinod.business@gmail.com"), contactsArr);
 } catch (e) {
     console.log(e);
 }
@@ -155,13 +156,16 @@ console.log('Number of Contacts in Array : ' + contactsArr.reduce(countEntries, 
 console.log(contactsArr);
 
 //UC5
-let index;
-contactsArr.filter(contact => contact.firstName == "Virat" && contact.lastName == "Kohli")
-    .forEach(contact => {
-        if (contact.firstName == "Virat" && contact.lastName == "Kohli")
-            index = contactsArr.indexOf(contact);
-    });
-contactsArr.splice(index);
+function deleteFromBook(firstName, lastName, AddressBook) {
+    let index;
+    AddressBook.filter(contact => contact.firstName == firstName && contact.lastName == lastName)
+        .forEach(contact => {
+            if (contact.firstName == firstName && contact.lastName == lastName)
+                index = contactsArr.indexOf(contact);
+        });
+    AddressBook.splice(index, 1);
+}
+deleteFromBook("Virat", "Kohli", contactsArr);
 console.log(contactsArr);
 
 //UC6
@@ -169,3 +173,21 @@ function countEntries(total) {
     return total + 1;
 }
 let countOfContacts = contactsArr.reduce(countEntries, 0);
+
+//UC8
+function searchByCityOrState(field, value, AddressBook) {
+    if (field == "City") {
+        console.log('The Contacts in the City : ' + value);
+        AddressBook.filter(contact => contact.city == value).forEach(contact => {
+            console.log(contact);
+        });
+    }
+    if (field == "State") {
+        console.log('The Contacts in the State : ' + value);
+        AddressBook.filter(contact => contact.state == value).forEach(contact => {
+            console.log(contact);
+        });
+    }
+}
+searchByCityOrState("City", "Howrah", contactsArr);
+searchByCityOrState("State", "West Bengal", contactsArr);
